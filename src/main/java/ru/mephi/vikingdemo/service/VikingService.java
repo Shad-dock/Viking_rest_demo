@@ -1,6 +1,5 @@
 package ru.mephi.vikingdemo.service;
 
-import net.datafaker.Faker;
 import org.springframework.stereotype.Service;
 import ru.mephi.vikingdemo.model.Viking;
 
