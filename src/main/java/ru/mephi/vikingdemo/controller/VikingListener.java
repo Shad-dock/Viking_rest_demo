@@ -30,4 +30,8 @@ public class VikingListener {
     void testAdd() {
         gui.addNewViking(service.createRandomViking());
     }
+
+    public VikingDesktopFrame getGui() {
+        return gui;
+    }
 }
