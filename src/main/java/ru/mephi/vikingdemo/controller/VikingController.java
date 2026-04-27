@@ -55,6 +55,7 @@ public class VikingController {
             @ApiResponse(responseCode = "200", description = "Викинг успешно создан")
     })
     public void addViking(){
+        System.out.println("POST api/vikings/post called");
         vikingListener.testAdd();
     }
 }
