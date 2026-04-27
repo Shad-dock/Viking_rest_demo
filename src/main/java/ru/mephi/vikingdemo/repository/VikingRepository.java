@@ -36,7 +36,7 @@ public class VikingRepository {
 
     public List<VikingEntity> findAll() {
         String sql = """
-                select id, name, age, height_cm, hair_color, beard_style
+                select id, name, age, height_cm, hair_color, beard_style, description
                 from vikings
                 order by id
                 """;
@@ -46,7 +46,7 @@ public class VikingRepository {
 
     public Optional<VikingEntity> findById(int id) {
         String sql = """
-                select id, name, age, height_cm, hair_color, beard_style
+                select id, name, age, height_cm, hair_color, beard_style, description
                 from vikings
                 where id = ?
                 """;
@@ -58,8 +58,8 @@ public class VikingRepository {
 
     public Integer save(VikingEntity viking) {
         String sql = """
-                insert into vikings(name, age, height_cm, hair_color, beard_style)
-                values (?, ?, ?, ?, ?)
+                insert into vikings(name, age, height_cm, hair_color, beard_style, description)
+                values (?, ?, ?, ?, ?, ?)
                 """;
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
