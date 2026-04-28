@@ -81,7 +81,11 @@ java -jar target/viking-demo-1.0.0.jar
 ```http
 GET http://localhost:8080/api/vikings
 ```
+Через curl:
 
+```bash
+curl -X "DELETE" "http://localhost:8080/api/vikings/0" -H "accept: */*"
+```
 
 
 ## Swagger UI
