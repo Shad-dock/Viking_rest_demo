@@ -13,6 +13,7 @@ import javax.swing.SwingConstants;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.util.List;
 
 
 public class VikingDesktopFrame extends JFrame {
@@ -43,6 +44,8 @@ public class VikingDesktopFrame extends JFrame {
         JPanel bottomPanel = new JPanel();
         bottomPanel.add(createButton);
         add(bottomPanel, BorderLayout.SOUTH);
+        
+        onInit();
     }
 
     private void onCreateViking() {
@@ -60,5 +63,12 @@ public class VikingDesktopFrame extends JFrame {
 
     public void updateViking(String name, Viking updatedViking) {
         tableModel.updateViking(name, updatedViking);
+    private void onInit() {
+        List<Viking> all = vikingService.findAll();
+        if (!all.isEmpty()){
+            for (Viking viking : all) {
+                tableModel.addViking(viking);
+            }
+        }
     }
 }
