@@ -4,15 +4,14 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 import ru.mephi.vikingdemo.model.Viking;
 import ru.mephi.vikingdemo.service.VikingAnalysisService;
 import ru.mephi.vikingdemo.service.VikingService;
 
 import java.util.List;
-import org.springframework.web.bind.annotation.PostMapping;
 
 @RestController
 @RequestMapping("/api/vikings")
@@ -60,5 +59,37 @@ public class VikingController {
     public void addViking(){
         System.out.println("POST api/vikings/post called");
         vikingListener.testAdd();
+    }
+
+    @PostMapping
+    @Operation(summary = "Добавить викинга с конкретными параметрами")
+    public ResponseEntity<Viking> addViking(@RequestBody Viking viking) {
+        if (viking == null || viking.name() == null || viking.name().trim().isEmpty()) {
+            return ResponseEntity.badRequest().build();
+        }
+
+        Viking savedViking = vikingService.addViking(viking);
+
+        if (vikingListener != null && vikingListener.getGui() != null) {
+            vikingListener.getGui().addNewViking(savedViking);
+        }
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedViking);
+    }
+
+    @DeleteMapping("/{name}")
+    @Operation(summary = "Удалить викинга по имени")
+    public ResponseEntity<Void> deleteViking(@PathVariable String name) {
+        System.out.println("DELETE /api/vikings/" + name + " called");
+
+        boolean deleted = vikingService.deleteVikingByName(name);
+
+        if (deleted) {
+            if (vikingListener != null && vikingListener.getGui() != null) {
+                vikingListener.getGui().removeVikingByName(name);
+            }
+            return ResponseEntity.ok().build();
+        }
+        return ResponseEntity.notFound().build();
     }
 }
