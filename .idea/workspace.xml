@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< Updated upstream
     <list default="true" id="83c312d2-43cb-4f43-8ab4-333f9f400ff4" name="Changes" comment="" />
+=======
+    <list default="true" id="83c312d2-43cb-4f43-8ab4-333f9f400ff4" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/mephi/vikingdemo/controller/VikingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/mephi/vikingdemo/controller/VikingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/mephi/vikingdemo/service/VikingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/mephi/vikingdemo/service/VikingService.java" afterDir="false" />
+    </list>
+>>>>>>> Stashed changes
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
