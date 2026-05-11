@@ -92,4 +92,20 @@ public class VikingController {
         }
         return ResponseEntity.notFound().build();
     }
+
+    @PostMapping("/generate/{count}")
+    @Operation(summary = "Сгенерировать викингов")
+    public ResponseEntity<List<Viking>> generateVikings(@PathVariable int count) {
+        if (count <= 0 || count > 20) {
+            return ResponseEntity.badRequest().build();
+        }
+
+        List<Viking> generated = vikingService.generateVikings(count);
+
+        if (vikingListener != null && vikingListener.getGui() != null) {
+            generated.forEach(viking -> vikingListener.getGui().addNewViking(viking));
+        }
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(generated);
+    }
 }
