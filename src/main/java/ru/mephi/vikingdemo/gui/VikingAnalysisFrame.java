@@ -22,7 +22,7 @@ public class VikingAnalysisFrame extends JFrame {
 
         JPanel buttons = new JPanel(new GridLayout(0, 2, 5, 5));
 
-        buttons.add(btn("Случайный >180", () -> showViking(service.getRandomVikingTallerThan180())));
+        buttons.add(btn("Случайный > 180", () -> showViking(service.getRandomVikingTallerThan180())));
         buttons.add(btn("Легендарное снаряжение", () -> showList(service.getVikingsWithLegendaryEquipment())));
         buttons.add(btn("Рыжебородые по возрасту", () -> showList(service.getRedBeardedSortedByAge())));
 

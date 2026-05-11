@@ -21,8 +21,8 @@ public class VikingDesktopFrame extends JFrame {
 
     private final VikingService vikingService;
     private final VikingTableModel tableModel = new VikingTableModel();
-    private VikingAnalysisFrame analysisFrame;       // ← добавить
-    private VikingAnalysisService analysisService;  // ← добавить
+    private VikingAnalysisFrame analysisFrame;
+    private VikingAnalysisService analysisService;
 
     public VikingDesktopFrame(VikingService vikingService, VikingAnalysisService analysisService) {
         this.vikingService = vikingService;
@@ -44,7 +44,7 @@ public class VikingDesktopFrame extends JFrame {
 
         JButton createButton = new JButton("Create random viking");
         createButton.addActionListener(event -> onCreateViking());
-        JButton analysisButton = new JButton("Анализ викингов");  // ← добавить
+        JButton analysisButton = new JButton("Анализ викингов");
         analysisButton.addActionListener(event -> onOpenAnalysis());
 
         JPanel bottomPanel = new JPanel();
@@ -60,7 +60,7 @@ public class VikingDesktopFrame extends JFrame {
         tableModel.addViking(viking);
     }
 
-    private void onOpenAnalysis() {                   // ← добавить метод
+    private void onOpenAnalysis() {
         if (analysisFrame == null || !analysisFrame.isVisible()) {
             analysisFrame = new VikingAnalysisFrame(analysisService);
             analysisFrame.setLocation(getX() + 20, getY() + getHeight() + 10);
