@@ -64,13 +64,9 @@ public class VikingService {
         if (count <= 0 || count > 20) {
             throw new IllegalArgumentException("Количество должно быть от 1 до 20");
         }
-
-        List<Viking> result = new ArrayList<>();
-        for (int i = 0; i < count; i++) {
-            Viking viking = vikingFactory.createRandomViking();
-            vikingStorage.save(viking);
-            result.add(viking);
-        }
-        return result;
+        return IntStream.range(0, count)
+                .mapToObj(i -> vikingFactory.createRandomViking())
+                .peek(viking -> vikingStorage.save(viking))
+                .toList();
     }
 }

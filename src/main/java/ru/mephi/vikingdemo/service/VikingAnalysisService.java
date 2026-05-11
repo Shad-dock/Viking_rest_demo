@@ -39,6 +39,17 @@ public class VikingAnalysisService {
         return countByFilter(v -> v.equipment().stream()
                 .filter(item -> item.name().equalsIgnoreCase("Axe")).count() == 1);
     }
+    public long countWithOneOrTwoAxes() {
+        return countByFilter(v ->
+                v.equipment().stream()
+                        .filter(item -> item.name().equalsIgnoreCase("Axe"))
+                        .count() == 1
+                        ||
+                        v.equipment().stream()
+                                .filter(item -> item.name().equalsIgnoreCase("Axe"))
+                                .count() == 2
+        );
+    }
 
     public long countWithTwoAxes() {
         return countByFilter(v -> v.equipment().stream()

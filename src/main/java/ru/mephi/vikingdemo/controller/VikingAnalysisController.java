@@ -61,6 +61,12 @@ public class VikingAnalysisController {
         return service.countWithTwoAxes();
     }
 
+    @GetMapping("/count/axe-one-or-two")
+    @Operation(summary = "Количество викингов с одним или двумя топорами")
+    public long countOneOrTwoAxes() {
+        return service.countWithOneOrTwoAxes();
+    }
+
     @GetMapping("/random-tall")
     @Operation(summary = "Случайный викинг ростом выше 180 см")
     public Viking randomTall() {
